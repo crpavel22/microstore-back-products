@@ -1,0 +1,14 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      authentication-database: admin
+      username: productUser
+      password: productPwd
+      #uri: mongodb://localhost:27017/admin
+      database: products
+logging:
+  level:
+    org.springframework: INFO
+    com.castillo.pavel.store: DEBUG
