@@ -51,12 +51,25 @@ public class ProductsController {
     }
 
     @PostMapping()
-    public ResponseEntity<Product> addNew(@Validated @RequestBody ProductRequest productRequest) throws URISyntaxException {
+    public ResponseEntity<Product> save(@Validated @RequestBody ProductRequest productRequest) throws URISyntaxException {
 
         Product p = productService.save(new Product(productRequest.getName(), productRequest.getDescription(), StatusEnum.ACTIVE));
 
         return ResponseEntity.created(
                 new URI(ServletUriComponentsBuilder.fromCurrentRequest().path("/" + p.getProductId()).toUriString())
+        )
+                .body(p);
+    }
+
+
+    @PutMapping("/{product_id}")
+    public ResponseEntity<Product> update(@Validated @RequestBody ProductRequest productRequest, @PathVariable("product_id") String id) throws URISyntaxException {
+
+
+        Product p = productService.update(new Product(productRequest.getName(), productRequest.getDescription(), StatusEnum.ACTIVE), id);
+
+        return ResponseEntity.created(
+                new URI(ServletUriComponentsBuilder.fromCurrentRequest().path("").toUriString())
         )
                 .body(p);
     }
