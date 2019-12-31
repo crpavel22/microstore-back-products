@@ -5,9 +5,6 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
 @JsonRootName("response")
 @Getter
 public class ProductDeleteResponse extends GenericResponse {

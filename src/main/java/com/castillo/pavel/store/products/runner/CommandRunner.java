@@ -24,17 +24,17 @@ public class CommandRunner implements CommandLineRunner {
     public void run(String... args) {
         productRepository.deleteAll();
 
-        Product p = new Product("Test", "Test", StatusEnum.ACTIVE);
-        productRepository.save(new Product("Mac", "Mac computer", StatusEnum.ACTIVE));
-        productRepository.save(new Product("MacBook", "Mac computer", StatusEnum.ACTIVE));
-        p = productRepository.save(p);
-
-        log.debug("Fetch all products");
-        log.debug("--------------------");
-        productRepository.findAllByStatusOrderByProductIdDesc(StatusEnum.ACTIVE).forEach(x -> log.info(x.toString()));
-        productRepository.findById(p.getProductId() == null ? "dd" : p.getProductId());
-        productRepository.findByNameLikeAndStatusOrderByName("t", StatusEnum.INACTIVE)
-        ;
+//        Product p = new Product("Test", "Test", StatusEnum.ACTIVE);
+//        productRepository.save(new Product("Mac", "Mac computer", StatusEnum.ACTIVE));
+//        productRepository.save(new Product("MacBook", "Mac computer", StatusEnum.ACTIVE));
+//        p = productRepository.save(p);
+//
+//        log.debug("Fetch all products");
+//        log.debug("--------------------");
+//        productRepository.findAllByStatusOrderByProductIdDesc(StatusEnum.ACTIVE).forEach(x -> log.info(x.toString()));
+//        productRepository.findById(p.getProductId() == null ? "dd" : p.getProductId());
+//        productRepository.findByNameLikeAndStatusOrderByName("t", StatusEnum.INACTIVE)
+//        ;
 
         log.info(String.valueOf(productRepository.count()));
 
