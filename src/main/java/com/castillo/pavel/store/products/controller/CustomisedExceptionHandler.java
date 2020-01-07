@@ -42,7 +42,7 @@ public class CustomisedExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     public final ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 
-        super.handleMethodArgumentNotValid(ex, headers, status, request);
+        //super.handleMethodArgumentNotValid(ex, headers, status, request);
         Map<String, String> errors = new HashMap<>();
 
         ex.getBindingResult().getAllErrors().forEach((error) -> {

@@ -11,10 +11,22 @@ spring:
       enabled: always
 logging:
   level:
-    org.springframework: INFO
+    org.springframework: DEBUG
     com.castillo.pavel.store: INFO
-    org.springframework.data.mongodb: DEBUG
-    org.mongodb: DEBUG
+    org.springframework.data.mongodb: INFO
+    org.mongodb: INFO
   pattern:
     console: "%d{ABSOLUTE} %5p %40.40c:%7L - %m%n"
+management:
+  endpoint:
+    health:
+      show-details: always
+  info:
+    git:
+      mode: full
+
+
+info:
+  app:
+    name: Test
 
