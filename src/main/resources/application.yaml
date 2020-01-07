@@ -11,7 +11,7 @@ spring:
       enabled: always
 logging:
   level:
-    org.springframework: DEBUG
+    org.springframework: INFO
     com.castillo.pavel.store: INFO
     org.springframework.data.mongodb: INFO
     org.mongodb: INFO
