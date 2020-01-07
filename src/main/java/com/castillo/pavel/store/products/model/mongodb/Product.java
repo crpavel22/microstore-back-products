@@ -1,6 +1,7 @@
 package com.castillo.pavel.store.products.model.mongodb;
 
 import com.castillo.pavel.store.products.enums.StatusEnum;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -10,6 +11,8 @@ import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.time.LocalDateTime;
 
 @Document(collection = "products")
 @TypeAlias("product")
@@ -28,5 +31,8 @@ public class Product {
     private String description;
     @NonNull
     private StatusEnum status;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MMM dd, yyyy HH:mm:ss")
+    private LocalDateTime createdDate = LocalDateTime.now();
+
 
 }
