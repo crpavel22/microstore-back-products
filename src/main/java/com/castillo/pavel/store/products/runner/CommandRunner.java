@@ -1,7 +1,5 @@
 package com.castillo.pavel.store.products.runner;
 
-import com.castillo.pavel.store.products.enums.StatusEnum;
-import com.castillo.pavel.store.products.model.mongodb.Product;
 import com.castillo.pavel.store.products.repository.ProductRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,7 @@ public class CommandRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        productRepository.deleteAll();
+       // productRepository.deleteAll();
 
 //        Product p = new Product("Test", "Test", StatusEnum.ACTIVE);
 //        productRepository.save(new Product("Mac", "Mac computer", StatusEnum.ACTIVE));

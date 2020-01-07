@@ -18,12 +18,11 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest()
 @AutoConfigureMockMvc
 public class ProductTest {
 
@@ -78,7 +77,21 @@ public class ProductTest {
         )
                 .andExpect(status().isCreated())
                 .andExpect(header().exists("Location"))
-                .andExpect(jsonPath("$.productId").value("123456789"))
+                .andExpect(jsonPath("$.product.productId").value("123456789"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    }
+
+    @Test
+    public void should_DeleteProduct_When_Correct_ID() throws Exception {
+        mockMvc.perform(delete("/api/v1.0/product/asdfasdfasdfasdf"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void should_404_when_DeleteProduct_When_Incorrect_ID() throws Exception {
+        doThrow(ProductNotFoundException.class).when(productService).delete(anyString());
+
+        mockMvc.perform(delete("/api/v1.0/product/asdfasdfasdfasdf"))
+                .andExpect(status().isNotFound());
     }
 }
